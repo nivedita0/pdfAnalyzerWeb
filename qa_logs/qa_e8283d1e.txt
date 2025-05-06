@@ -1,0 +1,191 @@
+QUESTION: what are the controls under ISO 27799
+Timestamp: 2025-05-05 23:38:22
+==================================================
+
+RETRIEVED CONTEXT:
+CONTEXT 1:
+Source: uploads\bcfd4cb8-b0f4-4e33-92d6-2a923dd9dc21_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: 28e78a05-d8f4-4664-b9c3-c2fdc04cc353
+Page: 2
+------------------------------
+controls is a technical report which aims to promote the capabilities could be established through the implementation of
+communication of security controls, needs and risks of medical a set of existing security controls. For this reason, the following
+devices to be incorporated into IT networks between medical security standards we selected (based on expert opinion) to
+device manufacturers, IT vendors and healthcare delivery identify these categories of security controls required to
+organisations. This is the only guidance available to medical establish each of the security capabilities:
+device manufacturers and healthcare organisations that
+specifically addresses security requirements for networked • ISO 27799;
+medical devices. The technical report presents an informative • ISO/IEC 27002;
+set of high level security capabilities which are intended to be
+the starting point for discussion between stakeholders. There • IEC 62443-3;
+
+--------------------------------------------------
+
+CONTEXT 2:
+Source: uploads\bcfd4cb8-b0f4-4e33-92d6-2a923dd9dc21_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: 28e78a05-d8f4-4664-b9c3-c2fdc04cc353
+Page: 4
+------------------------------
+manufacturer may choose another source or guidance
+number of incorrect log-on attempts. Results of tests carried
+for selection of security controls.
+out to ensure these controls have been correctly implemented
+• Finally, at C8 the claim relates to each of the selected
+are documented by the medical device manufacturer as
+security controls. evidence within the security case. In order to support these
+controls, a healthcare delivery organisation may develop an
+IV. SECURITY CASE
+“authentication and identification” policy, therefore, providing
+In support of IEC/TR 80001-2-2 and the security additional evidence to support the establishment of the security
+capabilities, development of security cases are the key element capability automatic logoff.
+of this framework for the interchange of security capability
+information between medical device manufacturers and
+III. CONCLUSION AND FUTURE WORK
+healthcare delivery organisations. The purpose of this
+
+--------------------------------------------------
+
+CONTEXT 3:
+Source: uploads\bcfd4cb8-b0f4-4e33-92d6-2a923dd9dc21_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: 28e78a05-d8f4-4664-b9c3-c2fdc04cc353
+Page: 4
+------------------------------
+also be included in a separate context component at and also experts from the International Standards Committee
+the top-level claim. Again, this information supports IEC SC62a. It is expected that this will be published as
+ideal operational use; IEC/TR 80001-2-8. A new work item proposal has also been
+• Evidence (Sn#) or proof of the successful raised by the authors within the same International Standards
+establishment of a security control. Evidence is the Committee to publish a second technical report (TR). This TR,
+most crucial component of the security case which IEC/TR 80001-2-9 - Application risk management for IT
+should be adequate, necessary and suitable [17] networks incorporating medical devices – Part 2-9:
+(connected to the lowest layer of sub-claims). Application guidance – Guidance for use of security
+assurance cases to demonstrate confidence in IEC/TR 80001-
+Security controls selected by the medical device
+2-2 security capabilities [18] has recently been drafted and
+
+--------------------------------------------------
+
+CONTEXT 4:
+Source: uploads\bcfd4cb8-b0f4-4e33-92d6-2a923dd9dc21_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: 28e78a05-d8f4-4664-b9c3-c2fdc04cc353
+Page: 3
+------------------------------
+ISO/IEC 27002 5.1.1 Policies for information
+security • At this point the strategy of the argument changes to
+5.1.2 Review of the Information address the identified risks (S1). In order to argue
+Security Policy that all potential risks are mitigated, J2 should be
+9.1.1 Access control policy
+instantiated to include, or refer to, a risk acceptance
+9.4.2 Secure Log-On Procedures
+policy to justify the choice of risks to receive risk-
+11.2.8 Unattended user equipment
+11.2.9 Clear desk and clear screen treatment.
+policy • C5 asserts the completeness of threat/vulnerability
+18.2.2 Compliance with Security identification with CTXT4 instantiated to include the
+Policies and Standards
+output of this process.
+ISO 27799 7.2.1 Information Security Policy
+Document • C6 claims that no unacceptable risks, as defined by
+7.2.2 Review of the Information the policy at J2, exist.
+Security Policy • Where no unacceptable threats/vulnerabilities exist
+7.8.1.2 Access Control Policy
+
+--------------------------------------------------
+
+CONTEXT 5:
+Source: uploads\bcfd4cb8-b0f4-4e33-92d6-2a923dd9dc21_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: 28e78a05-d8f4-4664-b9c3-c2fdc04cc353
+Page: 5
+------------------------------
+• Medical device manufacturers; as they will be soon
+2011, International Electrotechnical Committee,. p.
+be required to demonstrate evidence that a medical
+Page 30.
+device is secure both from a development and a final
+5. ISO, EN ISO 27799:2008 Health informatics.
+product perspective [1]. One of the main aims of this
+Information security management in health using
+research is to provide a framework to assist
+ISO/IEC 27002, 2008.
+manufacturers to demonstrate and communicate the
+6. ISO/IEC, 27001 Information Technology - Security
+security capability of medical devices.
+Techniques - Information Security Management
+• Healthcare delivery organisations; they have been
+Systems - Requirements, 2005.
+frustrated for years with medical device
+7. IEC, 62443-3-3 Ed 1.0 -- Security for industrial
+manufacturers and vendors who refuse to address the
+automation and control systems -Network and system
+security issues that medical devices create in a timely
+
+--------------------------------------------------
+
+PROMPT TEMPLATE:
+
+                You are a helpful research assistant. Use the following pieces of context from academic papers to provide a detailed, accurate answer to the question.
+                
+                Guidelines:
+                - Answer based only on the context provided, don't make up information
+                - If the context doesn't contain enough information, acknowledge limitations in your answer
+                - Include relevant details, facts, and figures from the context
+                - Structure your answer with clear paragraphs for readability
+                - If there are conflicting viewpoints in the context, present both sides
+
+                Context:
+                {context}
+
+                Question: {question}
+
+                Answer:
+                
+
+--------------------------------------------------
+
+ACTUAL PROMPT (truncated if too long):
+
+                You are a helpful research assistant. Use the following pieces of context from academic papers to provide a detailed, accurate answer to the question.
+                
+                Guidelines:
+                - Answer based only on the context provided, don't make up information
+                - If the context doesn't contain enough information, acknowledge limitations in your answer
+                - Include relevant details, facts, and figures from the context
+                - Structure your answer with clear paragraphs for readability
+                - If there are conflicting viewpoints in the context, present both sides
+
+                Context:
+                controls is a technical report which aims to promote the capabilities could be established through the implementation of
+communication of security controls, needs and risks of medical a set of existing security controls. For this reason, the following
+devices to be incorporated into IT networks between medical security standards we selected (based on expert opinion) to
+device manufacturers, IT vendors and healthcare delivery identify these categories of security controls required to
+organisations. This is the only guidance available to medical establish each of the security capabilities:
+device manufacturers and healthcare organisations that
+specifically addresses security requirements for networked • ISO 27799;
+medical devices. The technical report presents an informative • ISO/IEC 27002;
+set of high level security capabilities which are intended to be
+the starting point for discussion between stakeholders. There • IEC 62443-3;
+
+manufacturer may choose another source or guidance
+numbe...
+
+                Question: what are the controls under ISO 27799
+
+                Answer:
+                
+
+--------------------------------------------------
+
+GENERATED ANSWER:
+Based on the provided context, it appears that ISO 27799 is one of the medical security standards selected for implementation in IT networks between device manufacturers, IT vendors, and healthcare delivery organisations. However, the specific controls or requirements outlined in ISO 27799 are not explicitly mentioned in the provided context.
+
+The context only mentions that ISO 27799 was selected as one of the medical security standards, along with ISO/IEC 27002 and IEC 62443-3, to establish a set of existing security controls. It does not provide further details on the specific controls or requirements outlined in ISO 27799.
+
+Therefore, it is not possible to determine what the controls under ISO 27799 are based solely on the provided context. To answer this question accurately, one would need access to the actual standard itself or additional information that outlines the specific controls and requirements outlined in ISO 27799.
+
+In summary, while ISO 27799 is mentioned as a selected medical security standard, the specific controls or requirements outlined in the standard are not provided in the given context.
+
+--------------------------------------------------
+
+SOURCES:
+- Document: A Security Argument Pattern for Medical Device Assurance Cases, Page: 2
+- Document: A Security Argument Pattern for Medical Device Assurance Cases, Page: 3
+- Document: A Security Argument Pattern for Medical Device Assurance Cases, Page: 4

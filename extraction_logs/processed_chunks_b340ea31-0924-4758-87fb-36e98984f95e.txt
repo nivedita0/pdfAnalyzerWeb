@@ -1,0 +1,524 @@
+PROCESSED CHUNKS FOR: uploads\38156328-8a6b-4981-aeb2-060cb9e36334_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: b340ea31-0924-4758-87fb-36e98984f95e
+Total chunks: 41
+==================================================
+
+PROCESSED CHUNK 1:
+Page: 1
+------------------------------
+2014 IEEE International Symposium on Software Reliability Engineering Workshops
+A Security Argument Pattern for Medical Device
+Assurance Cases
+Anita Finnegan, Fergal McCaffery
+Regulated Software Research Centre
+Dundalk Institute of Technology
+Dundalk, Ireland
+{anita.finnegan, fergal.mccaffery}@dkit.
+...(total length: 909 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 2:
+Page: 1
+------------------------------
+cases, networked medical devices are regarded as a potential device is also secure prior to placing it on the market [1]. In
+weak link within a healthcare IT network that could provide a order to satisfy this requirement, it is recommended that
+means to expose the entire network to a malware attack.
+...(total length: 892 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 3:
+Page: 1
+------------------------------
+Drug Administration (FDA), medical devices manufacturers will
+risks.
+need to prove that their devices are secure. This paper presents a
+security case framework that is currently under development. This paper describes research being conducted to develop a
+The purpose of this framework is to provide 
+...(total length: 958 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 4:
+Page: 1
+------------------------------
+Assurance cases were originally used to address safety
+concerns for systems but the use of assurance cases has grown
+Keywords—assurance cases; security cases; medical device
+exponentially. Consequently, assurance cases are currently
+security; cybersecurity, security capability argument pattern.
+used
+...(total length: 962 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 5:
+Page: 1
+------------------------------
+healthcare IT networks in a variety of different ways i.e. of a system/software is called a security case.
+wirelessly, across the internet, and from device to device. With
+Traditionally, assurance cases in the medical device domain
+this increase in adoption and availability of interconnected
+have be
+...(total length: 996 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 6:
+Page: 1
+------------------------------
+delivery organisations utilize a wide range of networked
+entering the market. The FDA recommends the use of
+medical devices from hard-wired monitoring devices such as
+assurance cases to communicate information about the safety
+diagnostic equipment (CT scanners) to implanted medical
+of the device and
+...(total length: 947 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 7:
+Page: 1
+------------------------------
+improve the overall security practices during both device
+development and operation, right through to retirement.
+978-1-4799-7377-4/14 $31.00 © 2014 IEEE 220
+DOI 10.1109/ISSREW.2014.89
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:19 UTC from IEE
+...(total length: 329 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 8:
+Page: 2
+------------------------------
+II. OVERVIEW 80001-2-2 security capabilities are the foundation of this
+framework.
+This framework leverages on a number of security related
+standards [4], [5], [6], [7], [8], [9], [10] and utilises the
+concepts of Goal Structure Notation (GSN) and an argument The security capabilities are intended t
+...(total length: 900 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 9:
+Page: 2
+------------------------------
+doubt. Therefore, a more obtainable approach has been and/or organisational security controls required to manage
+employed which argues that a number of security capabilities risks to confidentiality, integrity, availability and
+have been acceptably established using a risk based approach. accountabi
+...(total length: 896 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 10:
+Page: 2
+------------------------------
+controls is a technical report which aims to promote the capabilities could be established through the implementation of
+communication of security controls, needs and risks of medical a set of existing security controls. For this reason, the following
+devices to be incorporated into IT networks betw
+...(total length: 942 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 11:
+Page: 2
+------------------------------
+set of high level security capabilities which are intended to be
+the starting point for discussion between stakeholders. There • IEC 62443-3;
+are a total of 19 security capabilities (see Table I) which
+• NIST SP 800-53;
+provide a template for a healthcare organisation to
+communicate their security r
+...(total length: 970 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 12:
+Page: 2
+------------------------------
+standards working group IEC SC62a JWG7) is currently at a
+Table I - IEC/TR 80001-2-2 security capabilities
+committee draft stage and expected to be published as IEC/TR
+Security
+Code Capability Code Security Capability 80001-2-8 [14] with the International Standards Committee
+Malware IEC SC62a JWG7. 
+...(total length: 990 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 13:
+Page: 2
+------------------------------
+Product Upgrades confidentiality and protection from malicious intrusion both of
+Data Backup and System and
+DTBK SAHD which could potentially lead to compromises in integrity or
+Disaster Recovery Application Hardening
+Third-Party system/data availability. An example of one of the security
+Emergency 
+...(total length: 995 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 14:
+Page: 2
+------------------------------
+Authentication manufacturers’: defined acceptable risk tolerance; required
+Health Data
+rigour; preferable security standard/guidance resource; and the
+STCF Storage
+Confidentiality appropriateness of the security control etc. [15].
+221
+Authorized licensed use limited to: San Jose State University. Do
+...(total length: 379 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 15:
+Page: 2
+------------------------------
+Tables found on page:
+Table 1:
+Code	Security
+Capability	Code	Security Capability
+ALOF	Automatic logoff	MLDP	Malware
+detection/prevention
+AUDT	Audit Controls	NAUT	Node Authentication
+AUTH	Authorization	PAUT	Person Authentication
+CNFS	Configuration of
+Security Features	PLOK	Physical Locks on
+Device
+CS
+...(total length: 697 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 16:
+Page: 3
+------------------------------
+Table II - Security controls for automatic logoff (ALOF) as C1 will be the entire security case top level claim.
+Standard Ref Control See Section IV).
+SP 800-53 AC-1 Access Control Policy and • The pattern is applied to each of the 19 security
+Management
+capabilities regardless of whether the securi
+...(total length: 968 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 17:
+Page: 3
+------------------------------
+ISO/IEC 27002 5.1.1 Policies for information
+security • At this point the strategy of the argument changes to
+5.1.2 Review of the Information address the identified risks (S1). In order to argue
+Security Policy that all potential risks are mitigated, J2 should be
+9.1.1 Access control policy
+instanti
+...(total length: 970 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 18:
+Page: 3
+------------------------------
+7.2.2 Review of the Information the policy at J2, exist.
+Security Policy • Where no unacceptable threats/vulnerabilities exist
+7.8.1.2 Access Control Policy
+(n=0), Sn1 is instantiated otherwise, at C7, each of
+7.8.3 Unattended User Equipment
+the threats requiring risk treatment are addressed
+7.8.3 C
+...(total length: 799 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 19:
+Page: 3
+------------------------------
+Policies and Standards C2
+IEC 62443-3-3 SR 2.5 Session Lock Security Capability
+[ALOF] addressed
+SR 2.6 Remote session termination
+n = 19
+CTXT3
+ecurity Argument Pattern J1 C3 C4 Asset the [ALOF]
+As mentioned, in the previous section, the security case { n J o u n st - i s f e ic le a c ti t o io n n
+...(total length: 913 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 20:
+Page: 3
+------------------------------
+mitigated acceptability criteria}
+complexity of the security case [16]; 2) reduce the likelihood
+of incomplete/inadequate arguments; and 3) with the inclusion
+CTXT4 C5
+of this information presented in the security case, it is P {T r h o r v e id a e t/ s V ulnerability X} { T I h d r e e n a t t if 
+...(total length: 751 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 21:
+Page: 3
+------------------------------
+present
+a security case for a particular medical device, or for multiple
+n>0 n=0
+security cases with similar type risks associated with the Sn1
+d us e e s s ig G n S a N nd n u o s ta e t i o o f n m an u d lt i a p d le d it o io f n m al e d ex ic t a e l n s d io ev n i s c e a s s . p T re h s e
+...(total length: 995 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 22:
+Page: 3
+------------------------------
+with a top-level argument claim (C2) addressing a
+Fig. 1. Security Capability Argument Pattern
+particular security capability, in this example,
+automatic log off (ALOF). (C2, not C1 is used here
+222
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:1
+...(total length: 343 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 23:
+Page: 3
+------------------------------
+Tables found on page:
+Table 1:
+Table II - Security controls for automatic logoff (ALOF)		
+Standard	Ref	Control
+SP 800-53	AC-1	Access Control Policy and
+Management
+	AC-11	Session Lock
+	AC-12	Session termination
+	IA-11	Re-authentication
+ISO/IEC 15408-2	FTA_SSL	Session Locking and
+Termination
+	FMT_SAE	
+...(total length: 989 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 24:
+Page: 3
+------------------------------
+7.8.3	Clear desk and Clear Screen
+Policy
+	7.8.4	Secure Log-On Procedures
+	7.8.4	Session Time-Out
+	7.8.4	Limitation of Connection Time
+	7.12.3	Compliance with Security
+Policies and Standards
+IEC 62443-3-3	SR 2.5	Session Lock
+	SR 2.6	Remote session termination
+...(total length: 258 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 25:
+Page: 4
+------------------------------
+• The strategy of the argument changes once again at delivery organisations to maintain the security capability,
+S2 to argue over the selection of mitigating controls further administrative or operational controls may be required.
+for each of the identified risks requiring risk- For example, conside
+...(total length: 958 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 26:
+Page: 4
+------------------------------
+manufacturer may choose another source or guidance
+number of incorrect log-on attempts. Results of tests carried
+for selection of security controls.
+out to ensure these controls have been correctly implemented
+• Finally, at C8 the claim relates to each of the selected
+are documented by the medical d
+...(total length: 951 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 27:
+Page: 4
+------------------------------
+information between medical device manufacturers and
+III. CONCLUSION AND FUTURE WORK
+healthcare delivery organisations. The purpose of this
+framework is to provide an end to end solution useful during This paper presents a brief overview of ongoing work in
+development, certification and operation. t
+...(total length: 969 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 28:
+Page: 4
+------------------------------
+security argument pattern has been structured in such a way to
+These include:
+provide regulators and healthcare delivery organisations with a
+• The top-level claim (C1) – This is the overall claim comprehensive matrix showing the link between the security
+and purpose of the security case which, in t
+...(total length: 974 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 29:
+Page: 4
+------------------------------
+currently being developed. This ‘live’ database will provide a
+intended use, operational environment etc. should be
+link between each of the 19 security capabilities, their
+included as context (CTXT1) at the top-level claim
+associated vulnerabilities and mitigating controls. The purpose
+(C1). This i
+...(total length: 948 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 30:
+Page: 4
+------------------------------
+also be included in a separate context component at and also experts from the International Standards Committee
+the top-level claim. Again, this information supports IEC SC62a. It is expected that this will be published as
+ideal operational use; IEC/TR 80001-2-8. A new work item proposal has also be
+...(total length: 994 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 31:
+Page: 4
+------------------------------
+assurance cases to demonstrate confidence in IEC/TR 80001-
+Security controls selected by the medical device
+2-2 security capabilities [18] has recently been drafted and
+manufacturers, may often be technical controls and evidence
+should be documented in the security case to demonstrate submitted for 
+...(total length: 929 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 32:
+Page: 4
+------------------------------
+healthcare delivery organisations (end users), additional
+security cases, the framework will also be validated in
+security controls may be required. In order to enable healthcare
+223
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:19 UTC from IEEE 
+...(total length: 327 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 33:
+Page: 5
+------------------------------
+industry both with medical device manufacturers and Networked Medical Devices in SPICE 20132013,
+healthcare delivery organisations located both in Europe and Springer: Bremen, Germany. p. 25-36.
+the US. 3. FDA and CDRH, Total Product Life Cycle: Infusion
+Pump - Premarket Notification [510(k)] Submis
+...(total length: 972 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 34:
+Page: 5
+------------------------------
+• Medical device manufacturers; as they will be soon
+2011, International Electrotechnical Committee,. p.
+be required to demonstrate evidence that a medical
+Page 30.
+device is secure both from a development and a final
+5. ISO, EN ISO 27799:2008 Health informatics.
+product perspective [1]. One of the 
+...(total length: 951 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 35:
+Page: 5
+------------------------------
+manufacturers and vendors who refuse to address the
+automation and control systems -Network and system
+security issues that medical devices create in a timely
+security -- System security requirements and security
+manner [20] [21]. Medical device security is
+assurance levels 2013.
+becoming increasing
+...(total length: 936 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 36:
+Page: 5
+------------------------------
+integration of security cases as part of their on-site
+Security Functional Components2008.
+risk management process.
+10. ISO/IEC, 15408-3 Information Technology -
+At present, there is no formal method for addressing Security Techniques - Evaluation Criteria for IT
+security practices within the medica
+...(total length: 978 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 37:
+Page: 5
+------------------------------
+between the healthcare delivery organisations and medical Notation – A Safety Argument Notation, 2004.
+device manufacturers. 13. Bloomfield, R. and P. Bishop, Safety and assurance
+cases: Past, present and possible future - an Adelard
+ACKNOWLEDGMENT perspective. 2010.
+This research is supported by th
+...(total length: 901 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 38:
+Page: 5
+------------------------------
+initiative by the Irish Government and European Regional on standards for establishing the security capabilities
+Development Fund), and supported in part by Lero - the Irish identified in IEC 80001-2-2. Lead Author:
+Software Engineering Research Centre (http://www.lero.ie) A.Finnegan, In Press.
+gran
+...(total length: 928 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 39:
+Page: 5
+------------------------------
+and Drug Administration Staff2013. Service System (CSSS). 2012.
+2. Finnegan, A., F. McCaffery, and G. Coleman, A 18. IEC/WD, 80001-2-9 - Application of risk
+Process Assessment Model for Security Assurance of management for IT networks incorporating medical
+devices – Part 2-8: Application guidance - 
+...(total length: 457 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 40:
+Page: 6
+------------------------------
+for use of security assurance cases to demonstrate 21. Millman, G.J., Medical Device Makers Slow to
+confidence in IEC/TR 80001-2-2 security Address Cyber Risks, Hospitals Complain, W.S.
+capabilities. Lead Author: A.Finnegan, In Press. Journal, Editor 2013.
+19. Government Accountability Office, Medic
+...(total length: 883 characters)
+
+--------------------------------------------------
+
+PROCESSED CHUNK 41:
+Page: 6
+------------------------------
+2012. and patient safety: Perspectives of health care
+information cybersecurity executives. 2013.
+225
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:19 UTC from IEEE Xplore. Restrictions apply.
+...(total length: 246 characters)
+
+--------------------------------------------------
+

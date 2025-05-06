@@ -1,0 +1,572 @@
+FULL CONTENT FOR: uploads\b2f1938e-ee07-4d07-a27e-ad7dad68cd50_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: 6559b050-bcbf-48ee-b421-d6ba16132c5c
+==================================================
+
+METADATA:
+title: A Security Argument Pattern for Medical Device Assurance Cases
+authors: []
+year: 2012
+doi: 10.1109/issrew.2014.89
+abstract: 
+
+==================================================
+
+CHUNK 1:
+Page: 1
+------------------------------
+2014 IEEE International Symposium on Software Reliability Engineering Workshops
+A Security Argument Pattern for Medical Device
+Assurance Cases
+Anita Finnegan, Fergal McCaffery
+Regulated Software Research Centre
+Dundalk Institute of Technology
+Dundalk, Ireland
+{anita.finnegan, fergal.mccaffery}@dkit.ie
+Abstract—Medical device security is a growing concern for Until now medical device manufacturers have only been
+medical device manufacturers, healthcare delivery organisations required to demonstrate that their device is safe and effective.
+and regulators in the industry. Increasingly, researchers are With the upcoming FDA cybersecurity regulatory guidance,
+demonstrating exactly how vulnerable these devices are. In many manufacturers will now have to demonstrate that a medical
+cases, networked medical devices are regarded as a potential device is also secure prior to placing it on the market [1]. In
+weak link within a healthcare IT network that could provide a order to satisfy this requirement, it is recommended that
+means to expose the entire network to a malware attack. At manufacturers supply documentation detailing (1) the security
+present there is no formal method for implementing security risk
+risks identified during the design stage, (2) the security controls
+management practices in the medical device industry. However,
+and justification of these controls to mitigate the risks, and (3)
+with new regulatory guidance being developed by the Food and
+a traceability matrix linking the security controls to the security
+Drug Administration (FDA), medical devices manufacturers will
+risks.
+need to prove that their devices are secure. This paper presents a
+security case framework that is currently under development. This paper describes research being conducted to develop a
+The purpose of this framework is to provide medical device framework to meet the requirements of this regulatory
+manufacturers and healthcare delivery organisations with a guidance through the use of assurance cases. Assurance cases
+solution to assist both in establishing confidence in the security are structured, evidence based arguments used to demonstrate
+assurance of medical devices and to also maintain this confidence
+confidence that a system holds a particular critical property.
+throughout the lifetime of the device.
+Assurance cases were originally used to address safety
+concerns for systems but the use of assurance cases has grown
+Keywords—assurance cases; security cases; medical device
+exponentially. Consequently, assurance cases are currently
+security; cybersecurity, security capability argument pattern.
+used to address other critical properties such as dependability,
+reliability and security across a range of safety critical domains
+I. INTRODUCTION
+such as automotive, railway, defence, aviation etc. Whenever
+Over the past few years the use of interoperable and assurance cases are used to argue safety and dependability they
+networked medical devices has increased dramatically. These are referred to as safety cases and dependability cases
+medical devices have functionality to communicate via respectively. Similarly, an assurance case arguing the security
+healthcare IT networks in a variety of different ways i.e. of a system/software is called a security case.
+wirelessly, across the internet, and from device to device. With
+Traditionally, assurance cases in the medical device domain
+this increase in adoption and availability of interconnected
+have been used to address safety concerns [2]. Since April
+medical devices, patients can now receive around-the-clock
+2010, Infusion Pump manufacturers have been operating under
+care, outside the healthcare environment, and even in the
+the Infusion Pump Improvement Initiative where a draft
+comfort of their own home. Consequently, resource demands to
+guidance document [3] recommends the use of assurance cases
+administer this patient care is significantly reduced. Healthcare
+for use during the approval process for new Infusion Pumps
+delivery organisations utilize a wide range of networked
+entering the market. The FDA recommends the use of
+medical devices from hard-wired monitoring devices such as
+assurance cases to communicate information about the safety
+diagnostic equipment (CT scanners) to implanted medical
+of the device and how risks have been identified and mitigated
+devices such as defibrillators. The benefits of networking these
+[3]. The objective of the research is to investigate how a
+devices are significant but in using such technology, a new set
+security case framework can be adopted by both medical
+of risks arise which can impact the safety of a patient. These
+device manufacturers and healthcare delivery organisations to
+are security risks, threats and vulnerabilities.
+improve the overall security practices during both device
+development and operation, right through to retirement.
+978-1-4799-7377-4/14 $31.00 © 2014 IEEE 220
+DOI 10.1109/ISSREW.2014.89
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:19 UTC from IEEE Xplore. Restrictions apply.
+
+--------------------------------------------------
+
+CHUNK 2:
+Page: 2
+------------------------------
+II. OVERVIEW 80001-2-2 security capabilities are the foundation of this
+framework.
+This framework leverages on a number of security related
+standards [4], [5], [6], [7], [8], [9], [10] and utilises the
+concepts of Goal Structure Notation (GSN) and an argument The security capabilities are intended to support the
+pattern [11]. In this particular instance, security cases are maintenance of confidentiality, integrity and availability which
+intended to demonstrate confidence in the establishment of may otherwise be compromised intentionally or
+security capabilities (as outlined in IEC/TR 80001-2-2). It is unintentionally. IEC/TR 80001-2-2, defines a security
+difficult to argue that a system is secure [12] [13] beyond all capability as “a broad category of technical, administrative
+doubt. Therefore, a more obtainable approach has been and/or organisational security controls required to manage
+employed which argues that a number of security capabilities risks to confidentiality, integrity, availability and
+have been acceptably established using a risk based approach. accountability of data and systems”. The security capabilities
+do not however provide sufficient detail for the specification of
+IEC/TR 80001-2-2 - Application of risk management for requirements but instead provide a classification and structure
+IT-networks incorporating medical devices - Guidance for the that can be used to organise such requirements [4]. A key
+communication of medical device security needs, risks and component of this research was to determine how such security
+controls is a technical report which aims to promote the capabilities could be established through the implementation of
+communication of security controls, needs and risks of medical a set of existing security controls. For this reason, the following
+devices to be incorporated into IT networks between medical security standards we selected (based on expert opinion) to
+device manufacturers, IT vendors and healthcare delivery identify these categories of security controls required to
+organisations. This is the only guidance available to medical establish each of the security capabilities:
+device manufacturers and healthcare organisations that
+specifically addresses security requirements for networked • ISO 27799;
+medical devices. The technical report presents an informative • ISO/IEC 27002;
+set of high level security capabilities which are intended to be
+the starting point for discussion between stakeholders. There • IEC 62443-3;
+are a total of 19 security capabilities (see Table I) which
+• NIST SP 800-53;
+provide a template for a healthcare organisation to
+communicate their security requirements for a given medical • ISO/IEC 15408-2;
+device based on their needs taking into account operational
+environment, network infrastructure, interconnected devices, • ISO/IEC 15408-3.
+users etc. The aim is to facilitate more effective communication
+All relatable controls from each of the six standards were
+of the security requirements for a medical device. IEC/TR
+mapped to the 19 security capabilities. This work (lead by the
+authors and validated by the international medical device
+standards working group IEC SC62a JWG7) is currently at a
+Table I - IEC/TR 80001-2-2 security capabilities
+committee draft stage and expected to be published as IEC/TR
+Security
+Code Capability Code Security Capability 80001-2-8 [14] with the International Standards Committee
+Malware IEC SC62a JWG7. This document presents the categories of
+ALOF Automatic logoff MLDP
+detection/prevention security controls prescribed for a system to establish security
+AUDT Audit Controls NAUT Node Authentication
+capabilities to protect the confidentiality, integrity, availability
+AUTH Authorization PAUT Person Authentication
+and accountability of data and systems.
+Configuration of Physical Locks on
+CNFS
+Security Features
+PLOK
+Device
+Cyber Security The security controls support the maintenance of
+CSUP SGUD Security Guides
+Product Upgrades confidentiality and protection from malicious intrusion both of
+Data Backup and System and
+DTBK SAHD which could potentially lead to compromises in integrity or
+Disaster Recovery Application Hardening
+Third-Party system/data availability. An example of one of the security
+Emergency Components in capabilities (automatic logoff -ALOF) and associated, mapped
+EMRG RDMP
+Access Product Lifecycle security controls is presented in Table II. Table II illustrates
+Roadmaps
+that there are a total of 25 technical, administrative,
+Health Data De- Transmission
+DIDT TXCF operational and management security across all 5 standards for
+Identification Confidentiality
+Health Data ALOF. The selection of security controls for each security
+IGAU Integrity and TXIG Transmission Integrity capability will be dependent upon the medical devices
+Authentication manufacturers’: defined acceptable risk tolerance; required
+Health Data
+rigour; preferable security standard/guidance resource; and the
+STCF Storage
+Confidentiality appropriateness of the security control etc. [15].
+221
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:19 UTC from IEEE Xplore. Restrictions apply.
+
+Tables found on page:
+Table 1:
+Code	Security
+Capability	Code	Security Capability
+ALOF	Automatic logoff	MLDP	Malware
+detection/prevention
+AUDT	Audit Controls	NAUT	Node Authentication
+AUTH	Authorization	PAUT	Person Authentication
+CNFS	Configuration of
+Security Features	PLOK	Physical Locks on
+Device
+CSUP	Cyber Security
+Product Upgrades	SGUD	Security Guides
+DTBK	Data Backup and
+Disaster Recovery	SAHD	System and
+Application Hardening
+EMRG	Emergency
+Access	RDMP	Third-Party
+Components in
+Product Lifecycle
+Roadmaps
+DIDT	Health Data De-
+Identification	TXCF	Transmission
+Confidentiality
+IGAU	Health Data
+Integrity and
+Authentication	TXIG	Transmission Integrity
+STCF	Health Data
+Storage
+Confidentiality		
+
+--------------------------------------------------
+
+CHUNK 3:
+Page: 3
+------------------------------
+Table II - Security controls for automatic logoff (ALOF) as C1 will be the entire security case top level claim.
+Standard Ref Control See Section IV).
+SP 800-53 AC-1 Access Control Policy and • The pattern is applied to each of the 19 security
+Management
+capabilities regardless of whether the security
+AC-11 Session Lock
+capability is required or not. If a particular security
+AC-12 Session termination
+IA-11 Re-authentication capability is not required (C3) justification for non-
+ISO/IEC 15408-2 FTA_SSL Session Locking and selection is required (J1).
+Termination • Where the security capability is required, the pattern
+FMT_SAE Security Attribute Expiration
+will be developed through C4 with the inclusion of
+FIA_UAU User Authentication
+supporting information at CTXT3.
+ISO/IEC 27002 5.1.1 Policies for information
+security • At this point the strategy of the argument changes to
+5.1.2 Review of the Information address the identified risks (S1). In order to argue
+Security Policy that all potential risks are mitigated, J2 should be
+9.1.1 Access control policy
+instantiated to include, or refer to, a risk acceptance
+9.4.2 Secure Log-On Procedures
+policy to justify the choice of risks to receive risk-
+11.2.8 Unattended user equipment
+11.2.9 Clear desk and clear screen treatment.
+policy • C5 asserts the completeness of threat/vulnerability
+18.2.2 Compliance with Security identification with CTXT4 instantiated to include the
+Policies and Standards
+output of this process.
+ISO 27799 7.2.1 Information Security Policy
+Document • C6 claims that no unacceptable risks, as defined by
+7.2.2 Review of the Information the policy at J2, exist.
+Security Policy • Where no unacceptable threats/vulnerabilities exist
+7.8.1.2 Access Control Policy
+(n=0), Sn1 is instantiated otherwise, at C7, each of
+7.8.3 Unattended User Equipment
+the threats requiring risk treatment are addressed
+7.8.3 Clear desk and Clear Screen
+Policy individually.
+7.8.4 Secure Log-On Procedures • Additional information regarding the cause or threat
+7.8.4 Session Time-Out scenario for each individual risk should be detailed
+7.8.4 Limitation of Connection Time and instantiated at CTXT5.
+Compliance with Security
+7.12.3
+Policies and Standards C2
+IEC 62443-3-3 SR 2.5 Session Lock Security Capability
+[ALOF] addressed
+SR 2.6 Remote session termination
+n = 19
+CTXT3
+ecurity Argument Pattern J1 C3 C4 Asset the [ALOF]
+As mentioned, in the previous section, the security case { n J o u n st - i s f e ic le a c ti t o io n n f o o r f S [A e L c O ur F i ] t y n o C t a p e a st b a i b lit li y s hed S [A e L c O ur F i ] t y e s C t a a p b a li b sh ili e ty d a p d ro d t r e e c s t s s e s /
+[ALOF]}
+comprises of a security capability argument pattern
+(throughout the remainder of this paper this will be referred to S1 J2
+Argue all potential {Policy for
+as a pattern). The pattern has been developed to: 1) reduce the threats /vulnerabilities determining risk
+mitigated acceptability criteria}
+complexity of the security case [16]; 2) reduce the likelihood
+of incomplete/inadequate arguments; and 3) with the inclusion
+CTXT4 C5
+of this information presented in the security case, it is P {T r h o r v e id a e t/ s V ulnerability X} { T I h d r e e n a t t if s i / e v d u lnerabilities} T id h e r n e t a if t i / c v a u t l i n o e n r ability
+anticipated that the integrity of the evidence is better complete
+n
+understood. Patterns can also support the concept of re-usable C6
+arguments that can be recorded and retrieved for re-use within No unacceptable risks
+present
+a security case for a particular medical device, or for multiple
+n>0 n=0
+security cases with similar type risks associated with the Sn1
+d us e e s s ig G n S a N nd n u o s ta e t i o o f n m an u d lt i a p d le d it o io f n m al e d ex ic t a e l n s d io ev n i s c e a s s . p T re h s e e n p t a e t d te r in n C { s C c T e a X n u T a s 5 e r i / o t / h c r o e n a s t equence} C R { X t 7 } i h s m k re a i a t s i t g s / o a v c t u e i l a n d t e e r d a b w il i i t t h y n T V lo h u g r l n e e a r t a / bility
+[11]. S2 CTXT6
+A
+m
+r
+i
+g
+ti
+u
+g
+e
+a t
+o
+in
+v
+g
+e r
+c ontrols
+I
+R
+E
+e
+C
+f
+/
+T
+T
+a
+R
+b
+8
+le
+0 0
+[X
+0
+]
+1 -2-8
+Fig. 1 provides an overview of the pattern. n
+C8
+Control [X] to
+• The pattern takes a risk-based approach and starts mitigate
+threat/vulnerability
+with a top-level argument claim (C2) addressing a
+Fig. 1. Security Capability Argument Pattern
+particular security capability, in this example,
+automatic log off (ALOF). (C2, not C1 is used here
+222
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:19 UTC from IEEE Xplore. Restrictions apply.
+
+Tables found on page:
+Table 1:
+Table II - Security controls for automatic logoff (ALOF)		
+Standard	Ref	Control
+SP 800-53	AC-1	Access Control Policy and
+Management
+	AC-11	Session Lock
+	AC-12	Session termination
+	IA-11	Re-authentication
+ISO/IEC 15408-2	FTA_SSL	Session Locking and
+Termination
+	FMT_SAE	Security Attribute Expiration
+	FIA_UAU	User Authentication
+ISO/IEC 27002	5.1.1	Policies for information
+security
+	5.1.2	Review of the Information
+Security Policy
+	9.1.1	Access control policy
+	9.4.2	Secure Log-On Procedures
+	11.2.8	Unattended user equipment
+	11.2.9	Clear desk and clear screen
+policy
+	18.2.2	Compliance with Security
+Policies and Standards
+ISO 27799	7.2.1	Information Security Policy
+Document
+	7.2.2	Review of the Information
+Security Policy
+	7.8.1.2	Access Control Policy
+	7.8.3	Unattended User Equipment
+	7.8.3	Clear desk and Clear Screen
+Policy
+	7.8.4	Secure Log-On Procedures
+	7.8.4	Session Time-Out
+	7.8.4	Limitation of Connection Time
+	7.12.3	Compliance with Security
+Policies and Standards
+IEC 62443-3-3	SR 2.5	Session Lock
+	SR 2.6	Remote session termination
+		
+
+--------------------------------------------------
+
+CHUNK 4:
+Page: 4
+------------------------------
+• The strategy of the argument changes once again at delivery organisations to maintain the security capability,
+S2 to argue over the selection of mitigating controls further administrative or operational controls may be required.
+for each of the identified risks requiring risk- For example, consider the security capability “automatic
+treatment. logoff” where a risk of exposure to confidential health data
+• CTXT6 should be instantiated with a reference to the exists without the capability. A medical device manufacturer
+may select authentication controls by enabling passwords or
+source of the security control. In this case IEC/TR
+tokens. The manufacturer may also establish authentication
+80001-2-8 is included; however, a medical device
+failure handling controls to allow the system to disable after a
+manufacturer may choose another source or guidance
+number of incorrect log-on attempts. Results of tests carried
+for selection of security controls.
+out to ensure these controls have been correctly implemented
+• Finally, at C8 the claim relates to each of the selected
+are documented by the medical device manufacturer as
+security controls. evidence within the security case. In order to support these
+controls, a healthcare delivery organisation may develop an
+IV. SECURITY CASE
+“authentication and identification” policy, therefore, providing
+In support of IEC/TR 80001-2-2 and the security additional evidence to support the establishment of the security
+capabilities, development of security cases are the key element capability automatic logoff.
+of this framework for the interchange of security capability
+information between medical device manufacturers and
+III. CONCLUSION AND FUTURE WORK
+healthcare delivery organisations. The purpose of this
+framework is to provide an end to end solution useful during This paper presents a brief overview of ongoing work in
+development, certification and operation. the area of medical device security assurance within the
+Regulated Software Research Centre. The security case
+The pattern (presented in section III) constitutes only a
+framework incorporates a number of existing international
+subset of the security case. In addition to the components of the
+standards, guidance documents and processes which have
+pattern depicted in Fig.1, there are a number of additional
+guided the development of the security argument pattern. The
+components required in order to complete the security case.
+security argument pattern has been structured in such a way to
+These include:
+provide regulators and healthcare delivery organisations with a
+• The top-level claim (C1) – This is the overall claim comprehensive matrix showing the link between the security
+and purpose of the security case which, in this case risks, associated causes, the mitigating security controls and
+may be written as “All security capabilities have been evidence of those controls being implemented to establish the
+acceptably established”. C1 is developed to include security capability.
+the underlying patterns for each of the 19 security
+In addition to developing a catalogue of security controls
+capabilities;
+relating to the security capabilities, a vulnerability database is
+• Information regarding the medical device, its
+currently being developed. This ‘live’ database will provide a
+intended use, operational environment etc. should be
+link between each of the 19 security capabilities, their
+included as context (CTXT1) at the top-level claim
+associated vulnerabilities and mitigating controls. The purpose
+(C1). This information is valuable in terms of
+of this is to develop a security case repository to inform
+agreements between stakeholders and also to provide
+medical devices manufacturers during security risk
+information to healthcare delivery organisations for
+management activities.
+optimal operational use post deployment;
+• Context (CTXT2) regarding assets, medical device The catalogue of security controls is currently being
+system description, interfaces, boundaries etc. should validated by a working group of international security experts
+also be included in a separate context component at and also experts from the International Standards Committee
+the top-level claim. Again, this information supports IEC SC62a. It is expected that this will be published as
+ideal operational use; IEC/TR 80001-2-8. A new work item proposal has also been
+• Evidence (Sn#) or proof of the successful raised by the authors within the same International Standards
+establishment of a security control. Evidence is the Committee to publish a second technical report (TR). This TR,
+most crucial component of the security case which IEC/TR 80001-2-9 - Application risk management for IT
+should be adequate, necessary and suitable [17] networks incorporating medical devices – Part 2-9:
+(connected to the lowest layer of sub-claims). Application guidance – Guidance for use of security
+assurance cases to demonstrate confidence in IEC/TR 80001-
+Security controls selected by the medical device
+2-2 security capabilities [18] has recently been drafted and
+manufacturers, may often be technical controls and evidence
+should be documented in the security case to demonstrate submitted for ballot and comments. The TR presents a
+confidence in the establishment of those controls. This framework for developing the security cases to establish
+evidence may include results of testing, analyses or historical confidence in the security capabilities outlined in IEC/TR
+information. However, as the intention is to develop a 80001-2-2.
+framework that is useable by both manufacturers and
+In terms of developing, interpreting and updating the
+healthcare delivery organisations (end users), additional
+security cases, the framework will also be validated in
+security controls may be required. In order to enable healthcare
+223
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:19 UTC from IEEE Xplore. Restrictions apply.
+
+--------------------------------------------------
+
+CHUNK 5:
+Page: 5
+------------------------------
+industry both with medical device manufacturers and Networked Medical Devices in SPICE 20132013,
+healthcare delivery organisations located both in Europe and Springer: Bremen, Germany. p. 25-36.
+the US. 3. FDA and CDRH, Total Product Life Cycle: Infusion
+Pump - Premarket Notification [510(k)] Submissions
+In the medical device domain, a gap exists as there is no
+- Draft Guidance, 2010.
+standardised way to assist organisations to satisfy new security
+4. IEC, TR 80001-2-2 - Application of risk management
+related requirements [19]. Therefore, the objective of this
+for IT-networks incorporating medical devices -
+research is to investigate this gap further and provide a
+Guidance for the disclosure and communication of
+solution to benefit the following:
+medical device security needs, risks and controls,
+• Medical device manufacturers; as they will be soon
+2011, International Electrotechnical Committee,. p.
+be required to demonstrate evidence that a medical
+Page 30.
+device is secure both from a development and a final
+5. ISO, EN ISO 27799:2008 Health informatics.
+product perspective [1]. One of the main aims of this
+Information security management in health using
+research is to provide a framework to assist
+ISO/IEC 27002, 2008.
+manufacturers to demonstrate and communicate the
+6. ISO/IEC, 27001 Information Technology - Security
+security capability of medical devices.
+Techniques - Information Security Management
+• Healthcare delivery organisations; they have been
+Systems - Requirements, 2005.
+frustrated for years with medical device
+7. IEC, 62443-3-3 Ed 1.0 -- Security for industrial
+manufacturers and vendors who refuse to address the
+automation and control systems -Network and system
+security issues that medical devices create in a timely
+security -- System security requirements and security
+manner [20] [21]. Medical device security is
+assurance levels 2013.
+becoming increasingly important for healthcare
+8. NIST, 800-53 R4 - Recommended Security Controls
+delivery organisations as they are responsible for the
+for Federal Information Systems and Organisations,
+security assurance of devices on their networks [22]
+U.S.D.o. Commerce, Editor 2013.
+[23] [24]. This research addresses the needs of the
+9. ISO/IEC, 15408-2 Information Technology - Security
+healthcare delivery organisations through the
+Techniques - Evaluation Criteria for IT Security, in
+integration of security cases as part of their on-site
+Security Functional Components2008.
+risk management process.
+10. ISO/IEC, 15408-3 Information Technology -
+At present, there is no formal method for addressing Security Techniques - Evaluation Criteria for IT
+security practices within the medical device industry. This is Security, in Security Assurance Components2008.
+the primary focus of this research and so it is expected that the 11. Kelly, T., Arguing Safety - A Systematic Approach to
+output of this research will positively impact the medical Managing Safety Cases, in Department of
+device domain in both the EU and the US by building Computing1998, University of York.
+awareness of security vulnerabilities, threats and related risks 12. Kelly, T. and R. Weaver, The Goal Structuring
+between the healthcare delivery organisations and medical Notation – A Safety Argument Notation, 2004.
+device manufacturers. 13. Bloomfield, R. and P. Bishop, Safety and assurance
+cases: Past, present and possible future - an Adelard
+ACKNOWLEDGMENT perspective. 2010.
+This research is supported by the Science Foundation Ireland 14. Retrieved 10 May 2014. http://www.merriam-
+(SFI) Stokes Lectureship Programme, grant number webster.com/dictionary/defeasible. defeasible.
+07/SK/I1299, the SFI Principal Investigator Programme, grant 15. IEC/WD, 80001-2-8 - Application of risk
+number 08/IN.1/I2030 (the funding of this project was management for IT networks incorporating medical
+awarded by Science Foundation Ireland under a co-funding devices – Part 2-8: Application guidance – Guidance
+initiative by the Irish Government and European Regional on standards for establishing the security capabilities
+Development Fund), and supported in part by Lero - the Irish identified in IEC 80001-2-2. Lead Author:
+Software Engineering Research Centre (http://www.lero.ie) A.Finnegan, In Press.
+grant 10/CE/I1855. 16. Yamamoto, S. and Y. Matsuno, An Evaluation of
+Argument Patterns to Reduce Pitfalls of Applying
+REFERENCES Assurance Case, in ASSURE 20132013: San
+Francisco, CA, USA.
+1. FDA and CDRH, Content of Premarket Submissions 17. Zeng, F., M. Lu, and D. Zhong. Software Safety
+for Management of Cybersecurity in Medical Certification Framework Based on Safety Case. in
+Devices, in Draft Guidance for Industry and Food Internation Conference on Computer Science &
+and Drug Administration Staff2013. Service System (CSSS). 2012.
+2. Finnegan, A., F. McCaffery, and G. Coleman, A 18. IEC/WD, 80001-2-9 - Application of risk
+Process Assessment Model for Security Assurance of management for IT networks incorporating medical
+devices – Part 2-8: Application guidance - Guidance
+224
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:19 UTC from IEEE Xplore. Restrictions apply.
+
+--------------------------------------------------
+
+CHUNK 6:
+Page: 6
+------------------------------
+for use of security assurance cases to demonstrate 21. Millman, G.J., Medical Device Makers Slow to
+confidence in IEC/TR 80001-2-2 security Address Cyber Risks, Hospitals Complain, W.S.
+capabilities. Lead Author: A.Finnegan, In Press. Journal, Editor 2013.
+19. Government Accountability Office, Medical Devices, 22. FDA and CDRH, FDA Safety Communication:
+FDA Should Expland Its Consideration of Reminder from FDA: Cybersecurity for Networked
+Information Security for Certain Types of Devices, Medical Devices is a Shared Responsibility, 2009.
+GAO, Editor 2012. 23. DHS, Attack Surface: Healthcare and Public Heath
+20. Talbot, T., Computer Viruses Are "Rampant" on Sector. 2012.
+Medical Devices in Hospitals, M.T. Review, Editor 24. Deloitte, Networked medical device cybersecurity
+2012. and patient safety: Perspectives of health care
+information cybersecurity executives. 2013.
+225
+Authorized licensed use limited to: San Jose State University. Downloaded on March 03,2025 at 01:43:19 UTC from IEEE Xplore. Restrictions apply.
+
+--------------------------------------------------
+

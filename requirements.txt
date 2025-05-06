@@ -1,0 +1,13 @@
+flask
+werkzeug
+nltk
+sentence-transformers
+faiss-cpu
+PyMuPDF
+scikit-learn
+networkx
+matplotlib
+pyvis
+requests
+plotly
+gensim

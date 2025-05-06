@@ -1,0 +1,181 @@
+QUESTION: what is the abstract
+Timestamp: 2025-05-06 00:53:16
+==================================================
+
+RETRIEVED CONTEXT:
+CONTEXT 1:
+Source: uploads\c4d89e7d-2d22-4a35-b598-88859268e1cb_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: b282a397-580a-47ac-ad77-8f88d719c600
+Page: 4
+------------------------------
+information between medical device manufacturers and
+III. CONCLUSION AND FUTURE WORK
+healthcare delivery organisations. The purpose of this
+framework is to provide an end to end solution useful during This paper presents a brief overview of ongoing work in
+development, certification and operation. the area of medical device security assurance within the
+Regulated Software Research Centre. The security case
+The pattern (presented in section III) constitutes only a
+framework incorporates a number of existing international
+subset of the security case. In addition to the components of the
+standards, guidance documents and processes which have
+pattern depicted in Fig.1, there are a number of additional
+guided the development of the security argument pattern. The
+components required in order to complete the security case.
+security argument pattern has been structured in such a way to
+These include:
+provide regulators and healthcare delivery organisations with a
+
+--------------------------------------------------
+
+CONTEXT 2:
+Source: uploads\c4d89e7d-2d22-4a35-b598-88859268e1cb_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: b282a397-580a-47ac-ad77-8f88d719c600
+Page: 5
+------------------------------
+between the healthcare delivery organisations and medical Notation – A Safety Argument Notation, 2004.
+device manufacturers. 13. Bloomfield, R. and P. Bishop, Safety and assurance
+cases: Past, present and possible future - an Adelard
+ACKNOWLEDGMENT perspective. 2010.
+This research is supported by the Science Foundation Ireland 14. Retrieved 10 May 2014. http://www.merriam-
+(SFI) Stokes Lectureship Programme, grant number webster.com/dictionary/defeasible. defeasible.
+07/SK/I1299, the SFI Principal Investigator Programme, grant 15. IEC/WD, 80001-2-8 - Application of risk
+number 08/IN.1/I2030 (the funding of this project was management for IT networks incorporating medical
+awarded by Science Foundation Ireland under a co-funding devices – Part 2-8: Application guidance – Guidance
+initiative by the Irish Government and European Regional on standards for establishing the security capabilities
+
+--------------------------------------------------
+
+CONTEXT 3:
+Source: uploads\c4d89e7d-2d22-4a35-b598-88859268e1cb_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: b282a397-580a-47ac-ad77-8f88d719c600
+Page: 5
+------------------------------
+• Medical device manufacturers; as they will be soon
+2011, International Electrotechnical Committee,. p.
+be required to demonstrate evidence that a medical
+Page 30.
+device is secure both from a development and a final
+5. ISO, EN ISO 27799:2008 Health informatics.
+product perspective [1]. One of the main aims of this
+Information security management in health using
+research is to provide a framework to assist
+ISO/IEC 27002, 2008.
+manufacturers to demonstrate and communicate the
+6. ISO/IEC, 27001 Information Technology - Security
+security capability of medical devices.
+Techniques - Information Security Management
+• Healthcare delivery organisations; they have been
+Systems - Requirements, 2005.
+frustrated for years with medical device
+7. IEC, 62443-3-3 Ed 1.0 -- Security for industrial
+manufacturers and vendors who refuse to address the
+automation and control systems -Network and system
+security issues that medical devices create in a timely
+
+--------------------------------------------------
+
+CONTEXT 4:
+Source: uploads\c4d89e7d-2d22-4a35-b598-88859268e1cb_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: b282a397-580a-47ac-ad77-8f88d719c600
+Page: 4
+------------------------------
+currently being developed. This ‘live’ database will provide a
+intended use, operational environment etc. should be
+link between each of the 19 security capabilities, their
+included as context (CTXT1) at the top-level claim
+associated vulnerabilities and mitigating controls. The purpose
+(C1). This information is valuable in terms of
+of this is to develop a security case repository to inform
+agreements between stakeholders and also to provide
+medical devices manufacturers during security risk
+information to healthcare delivery organisations for
+management activities.
+optimal operational use post deployment;
+• Context (CTXT2) regarding assets, medical device The catalogue of security controls is currently being
+system description, interfaces, boundaries etc. should validated by a working group of international security experts
+also be included in a separate context component at and also experts from the International Standards Committee
+
+--------------------------------------------------
+
+CONTEXT 5:
+Source: uploads\c4d89e7d-2d22-4a35-b598-88859268e1cb_A_Security_Argument_Pattern_for_Medical_Device_Assurance_Cases.pdf
+Document ID: b282a397-580a-47ac-ad77-8f88d719c600
+Page: 4
+------------------------------
+security argument pattern has been structured in such a way to
+These include:
+provide regulators and healthcare delivery organisations with a
+• The top-level claim (C1) – This is the overall claim comprehensive matrix showing the link between the security
+and purpose of the security case which, in this case risks, associated causes, the mitigating security controls and
+may be written as “All security capabilities have been evidence of those controls being implemented to establish the
+acceptably established”. C1 is developed to include security capability.
+the underlying patterns for each of the 19 security
+In addition to developing a catalogue of security controls
+capabilities;
+relating to the security capabilities, a vulnerability database is
+• Information regarding the medical device, its
+currently being developed. This ‘live’ database will provide a
+intended use, operational environment etc. should be
+link between each of the 19 security capabilities, their
+
+--------------------------------------------------
+
+PROMPT TEMPLATE:
+
+                You are a helpful research assistant. Use the following pieces of context from academic papers to provide a detailed, accurate answer to the question.
+                
+                Guidelines:
+                - Answer based only on the context provided, don't make up information
+                - If the context doesn't contain enough information, acknowledge limitations in your answer
+                - Include relevant details, facts, and figures from the context
+                - Structure your answer with clear paragraphs for readability
+                - If there are conflicting viewpoints in the context, present both sides
+
+                Context:
+                {context}
+
+                Question: {question}
+
+                Answer:
+                
+
+--------------------------------------------------
+
+ACTUAL PROMPT (truncated if too long):
+
+                You are a helpful research assistant. Use the following pieces of context from academic papers to provide a detailed, accurate answer to the question.
+                
+                Guidelines:
+                - Answer based only on the context provided, don't make up information
+                - If the context doesn't contain enough information, acknowledge limitations in your answer
+                - Include relevant details, facts, and figures from the context
+                - Structure your answer with clear paragraphs for readability
+                - If there are conflicting viewpoints in the context, present both sides
+
+                Context:
+                information between medical device manufacturers and
+III. CONCLUSION AND FUTURE WORK
+healthcare delivery organisations. The purpose of this
+framework is to provide an end to end solution useful during This paper presents a brief overview of ongoing work in
+development, certification and operation. the area of medical device security assurance within the
+Regulated Software Research Centre. The security case
+The pattern (presented in section III) constitutes only a
+framework incorporates a number of existing international
+subset of the security case. In addition to the components of the
+standards, guidance documents and processes which have
+pattern depicted in Fig.1, there are a number of additional
+guided the development of the security argument pattern. The
+components required in order to complete the security case.
+security argument pattern has been structured in such a way to
+These include:
+provide regulators and healthcare delivery organisations with a
+
+between the healthcare delive...
+
+                Question: what is the abstract
+
+                Answer:
+                
+
+--------------------------------------------------
+

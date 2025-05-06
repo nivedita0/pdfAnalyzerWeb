@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Research Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <header>
+        <h1>PDF Research Assistant</h1>
+        <p>Upload a research paper, ask questions, and manage references</p>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Upload PDF</h2>
+            <div class="upload-section">
+                <div class="file-input-wrapper" id="drop-area">
+                    <input type="file" id="file-input" class="file-input" accept=".pdf">
+                    <div class="drop-message">
+                        <p>Drag and drop a PDF file here or click to select</p>
+                        <p id="selected-file-name"></p>
+                    </div>
+                </div>
+                <button id="upload-button" class="button">Upload and Process</button>
+            </div>
+            
+            <div id="upload-alert" class="alert hidden"></div>
+            
+            <div id="upload-loading" class="loading">
+                <div class="spinner"></div>
+                <p>Processing PDF, please wait...</p>
+            </div>
+        </div>
+        
+        <div class="card" id="question-card" style="display: none;">
+            <h2>Ask Questions</h2>
+            <div class="question-section">
+                <input type="text" id="question-input" class="question-input" placeholder="Ask a question about the paper...">
+                <button id="ask-button" class="button">Ask</button>
+            </div>
+            
+            <div id="question-alert" class="alert hidden"></div>
+            
+            <div id="question-loading" class="loading">
+                <div class="spinner"></div>
+                <p>Getting answer, please wait...</p>
+            </div>
+            
+            <div class="answer-section" id="answer-section" style="display: none;">
+                <h3>Answer:</h3>
+                <div id="answer-text"></div>
+            </div>
+        </div>
+        
+        {% if zotero_enabled %}
+        <div class="card" id="zotero-card" style="display: none;">
+            <h2>Add to Zotero</h2>
+            <div class="zotero-section">
+                <h3>Document Metadata</h3>
+                <div class="form-group">
+                    <label>Title:</label>
+                    <input type="text" id="doc-title" class="text-input">
+                </div>
+                <div class="form-group">
+                    <label>Authors (comma separated):</label>
+                    <input type="text" id="doc-authors" class="text-input">
+                </div>
+                <div class="form-group">
+                    <label>Year:</label>
+                    <input type="text" id="doc-year" class="text-input">
+                </div>
+                <div class="form-group">
+                    <label>DOI:</label>
+                    <input type="text" id="doc-doi" class="text-input">
+                </div>
+                <div class="form-group">
+                    <label>Collection:</label>
+                    <select id="zotero-collections" class="select-input">
+                        <option value="">-- Select Collection --</option>
+                    </select>
+                </div>
+                <button id="add-to-zotero-button" class="button">Add to Zotero</button>
+            </div>
+            <div id="zotero-alert" class="alert hidden"></div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
