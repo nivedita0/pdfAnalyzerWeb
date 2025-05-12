@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Paper Search Engine</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .loading {
+            display: none;
+        }
+        .loading.active {
+            display: block;
+        }
+        .result-card {
+            transition: transform 0.2s;
+        }
+        .result-card:hover {
+            transform: translateY(-2px);
+        }
+        .source-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .source-arxiv {
+            background-color: #B7E4C7;
+            color: #1B4332;
+        }
+        .source-semantic-scholar {
+            background-color: #BDE0FE;
+            color: #023E8A;
+        }
+        .source-google-scholar {
+            background-color: #DDD6FE;
+            color: #5B21B6;
+        }
+        .upload-area {
+            border: 2px dashed #CBD5E0;
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            border-color: #4299E1;
+            background-color: #EBF8FF;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Academic Paper Search Engine</h1>
+            <p class="text-gray-600">Search and analyze academic papers</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Left Side: Search Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-semibold mb-6">Search Papers</h2>
+                <form id="searchForm" class="space-y-4">
+                    <div class="flex flex-col space-y-2">
+                        <input type="text" id="searchQuery" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your search query...">
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- Sources -->
+                        <div class="space-y-2">
+                            <label class="block text-gray-700 font-medium">Sources</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="sources" value="arxiv" class="form-checkbox" checked>
+                                    <span class="ml-2">arXiv</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="sources" value="semantic_scholar" class="form-checkbox" checked>
+                                    <span class="ml-2">Semantic Scholar</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="sources" value="google_scholar" class="form-checkbox" checked>
+                                    <span class="ml-2">Google Scholar</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Filters -->
+                        <div class="space-y-2">
+                            <label class="block text-gray-700 font-medium">Filters</label>
+                            <select id="yearFilter" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                                <option value="">Any Year</option>
+                                <option value="1">Last Year</option>
+                                <option value="5">Last 5 Years</option>
+                                <option value="10">Last 10 Years</option>
+                            </select>
+                            <select id="sortBy" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                                <option value="relevance">Sort by Relevance</option>
+                                <option value="date">Sort by Date</option>
+                                <option value="citations">Sort by Citations</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center">
+                        <button type="submit" class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            Search Papers
+                        </button>
+                    </div>
+                </form>
+
+                <div class="loading text-center py-8">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                    <p class="mt-2 text-gray-600">Searching...</p>
+                </div>
+
+                <div id="results" class="mt-8 space-y-6">
+                    <!-- Results will be populated here -->
+                </div>
+            </div>
+
+            <!-- Right Side: Paper Upload Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-semibold mb-6">Extract References & Citations</h2>
+                <div class="space-y-6">
+                    <div id="uploadArea" class="upload-area rounded-lg p-8 text-center cursor-pointer">
+                        <input type="file" id="paperUpload" class="hidden" accept=".pdf,.txt,.doc,.docx">
+                        <div class="space-y-4">
+                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <div class="text-gray-600">
+                                <p class="font-medium">Drop your paper here or click to upload</p>
+                                <p class="text-sm">(PDF, TXT, DOC, DOCX)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="uploadLoading" class="loading text-center py-4">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                        <p class="mt-2 text-gray-600">Analyzing paper...</p>
+                    </div>
+
+                    <div id="paperAnalysis" class="space-y-6">
+                        <div id="references" class="space-y-4">
+                            <h3 class="text-xl font-semibold text-gray-800">References</h3>
+                            <div id="referencesList" class="space-y-2">
+                                <!-- References will be populated here -->
+                            </div>
+                        </div>
+
+                        <div id="citations" class="space-y-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Citations</h3>
+                            <div id="citationsList" class="space-y-2">
+                                <!-- Citations will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const query = document.getElementById('searchQuery').value;
+            if (!query) {
+                alert('Please enter a search query');
+                return;
+            }
+
+            const selectedSources = Array.from(document.querySelectorAll('input[name="sources"]:checked'))
+                .map(cb => cb.value);
+            
+            if (selectedSources.length === 0) {
+                alert('Please select at least one source');
+                return;
+            }
+
+            const yearFilter = document.getElementById('yearFilter').value;
+            const sortBy = document.getElementById('sortBy').value;
+            const loading = document.querySelector('.loading');
+            const results = document.getElementById('results');
+
+            loading.classList.add('active');
+            results.innerHTML = '';
+
+            try {
+                const response = await fetch('/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query,
+                        sources: selectedSources,
+                        yearFilter,
+                        sortBy
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    results.innerHTML = data.results.map(result => `
+                        <div class="result-card bg-white rounded-lg shadow-md p-6 hover:shadow-lg relative">
+                            <span class="source-badge source-${result.source.toLowerCase().replace(' ', '-')}">${result.source}</span>
+                            <h2 class="text-xl font-semibold text-gray-800 mb-2">${result.title}</h2>
+                            <p class="text-gray-600 mb-2">${result.authors}</p>
+                            ${result.summary ? `<p class="text-gray-700 mb-4">${result.summary.substring(0, 200)}...</p>` : ''}
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-4">
+                                    <span class="text-gray-500">Published: ${result.published}</span>
+                                    <a href="${result.citation_url || '#'}" target="_blank" class="text-blue-500 hover:text-blue-600">
+                                        Citations: ${result.citations}
+                                    </a>
+                                </div>
+                                <a href="${result.url}" target="_blank" class="text-blue-500 hover:text-blue-600">View Paper →</a>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    results.innerHTML = `<div class="text-center text-red-500">Error: ${data.error}</div>`;
+                }
+            } catch (error) {
+                results.innerHTML = `<div class="text-center text-red-500">Error: ${error.message}</div>`;
+            } finally {
+                loading.classList.remove('active');
+            }
+        });
+
+        // Paper upload functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const paperUpload = document.getElementById('paperUpload');
+        const uploadLoading = document.getElementById('uploadLoading');
+        const referencesList = document.getElementById('referencesList');
+        const citationsList = document.getElementById('citationsList');
+
+        uploadArea.addEventListener('click', () => {
+            paperUpload.click();
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('border-blue-500', 'bg-blue-50');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('border-blue-500', 'bg-blue-50');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('border-blue-500', 'bg-blue-50');
+            const file = e.dataTransfer.files[0];
+            handleFileUpload(file);
+        });
+
+        paperUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            handleFileUpload(file);
+        });
+
+        async function handleFileUpload(file) {
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            uploadLoading.classList.add('active');
+            referencesList.innerHTML = '';
+            citationsList.innerHTML = '';
+
+            try {
+                const response = await fetch('/analyze_paper', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    referencesList.innerHTML = data.references.map(ref => `
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <p class="text-gray-800">${ref.title}</p>
+                            <p class="text-gray-600 text-sm">${ref.authors}</p>
+                            ${ref.url ? `<a href="${ref.url}" target="_blank" class="text-blue-500 hover:text-blue-600 text-sm">View Reference →</a>` : ''}
+                        </div>
+                    `).join('');
+
+                    citationsList.innerHTML = data.citations.map(citation => `
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <p class="text-gray-800">${citation.title}</p>
+                            <p class="text-gray-600 text-sm">${citation.authors}</p>
+                            ${citation.url ? `<a href="${citation.url}" target="_blank" class="text-blue-500 hover:text-blue-600 text-sm">View Citation →</a>` : ''}
+                        </div>
+                    `).join('');
+                } else {
+                    referencesList.innerHTML = `<div class="text-center text-red-500">Error: ${data.error}</div>`;
+                }
+            } catch (error) {
+                referencesList.innerHTML = `<div class="text-center text-red-500">Error: ${error.message}</div>`;
+            } finally {
+                uploadLoading.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html> 
