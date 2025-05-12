@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .feature-card {
+            transition: transform 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .document-actions {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .document-item:hover .document-actions {
+            opacity: 1;
+        }
+        .search-highlight {
+            background-color: #fff3cd;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Research Assistant</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Main Features Grid -->
+        <div class="row mb-4">
+            <!-- Document Upload -->
+            <div class="col-md-6 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-upload"></i> Upload Document</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="upload-form" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <input type="file" class="form-control" id="pdf-file" accept=".pdf" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zotero Integration -->
+            <div class="col-md-6 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-book"></i> Zotero Integration</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="zotero-status">
+                            {% if zotero_enabled %}
+                                <div class="alert alert-success">Zotero is configured and ready to use</div>
+                                <button class="btn btn-primary" onclick="testZoteroConnection()">Test Connection</button>
+                            {% else %}
+                                <div class="alert alert-warning">Zotero is not configured</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Zotero Search -->
+                        <div class="mt-4">
+                            <h6>Search Zotero Library</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="zotero-search-query" placeholder="Enter search query">
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" id="zotero-item-type">
+                                        <option value="">All Types</option>
+                                        <option value="journalArticle">Journal Article</option>
+                                        <option value="book">Book</option>
+                                        <option value="bookSection">Book Section</option>
+                                        <option value="conferencePaper">Conference Paper</option>
+                                        <option value="thesis">Thesis</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-primary w-100" onclick="searchZotero()">Search</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Search Results -->
+                        <div id="zotero-search-results" class="mt-4">
+                            <!-- Results will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Answering -->
+            <div class="col-md-6 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-question-circle"></i> Ask Questions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <select class="form-select" id="qa-document-select">
+                                <option value="">All Documents</option>
+                                {% for doc in documents %}
+                                    <option value="{{ doc.id }}">{{ doc.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="question-input" placeholder="Ask a question about your documents...">
+                        </div>
+                        <button class="btn btn-primary" onclick="askQuestion()">Ask</button>
+                        <div id="qa-results" class="mt-3">
+                            <!-- Q&A results will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document Analysis -->
+            <div class="col-md-6 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-graph-up"></i> Document Analysis</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <select class="form-select" id="analysis-document-select">
+                                <option value="">Select a document</option>
+                                {% for doc in documents %}
+                                    <option value="{{ doc.id }}">{{ doc.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="btn-group mb-3">
+                            <button class="btn btn-primary" onclick="summarizeDocument()">Get Summary</button>
+                            <button class="btn btn-info" onclick="extractFigures()">Extract Figures</button>
+                            <button class="btn btn-success" onclick="extractTables()">Extract Tables</button>
+                        </div>
+                        
+                        <!-- Visualization Section -->
+                        <div class="mt-4">
+                            <h6>Data Visualization</h6>
+                            <div class="btn-group mb-3">
+                                <button class="btn btn-outline-primary" onclick="generateVisualization('bar')">Bar Plot</button>
+                                <button class="btn btn-outline-primary" onclick="generateVisualization('pie')">Pie Chart</button>
+                                <button class="btn btn-outline-primary" onclick="generateVisualization('line')">Line Plot</button>
+                                <button class="btn btn-outline-primary" onclick="generateVisualization('histogram')">Histogram</button>
+                            </div>
+                            <div id="visualization-results" class="mt-3">
+                                <!-- Visualization results will be displayed here -->
+                            </div>
+                        </div>
+                        
+                        <div id="analysis-results" class="mt-3">
+                            <!-- Analysis results will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document List -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-file-text"></i> Your Documents</h5>
+            </div>
+            <div class="card-body">
+                <div id="document-list">
+                    {% for doc in documents %}
+                        <div class="document-item mb-3 p-3 border rounded">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5>{{ doc.title }}</h5>
+                                    <p class="mb-1">Authors: {{ doc.authors|join(', ') }}</p>
+                                    <p class="mb-1">Year: {{ doc.year }}</p>
+                                </div>
+                                <div class="document-actions">
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-success" onclick="addToZotero('{{ doc.id }}')">
+                                            <i class="bi bi-book"></i> Add to Zotero
+                                        </button>
+                                        <button class="btn btn-sm btn-primary" onclick="showDocumentActions('{{ doc.id }}')">
+                                            <i class="bi bi-three-dots"></i> Actions
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Document Actions Modal -->
+                            <div class="modal fade" id="actionsModal-{{ doc.id }}" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Document Actions</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="list-group">
+                                                <button class="list-group-item list-group-item-action" onclick="summarizeDocument('{{ doc.id }}')">
+                                                    <i class="bi bi-file-text"></i> Get Summary
+                                                </button>                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal fade" id="resultsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Results</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="resultsContent">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.2/dist/vis-network.min.js"></script>
+    <script>
+        // Helper function to show results in modal
+        function showResults(content) {
+            document.getElementById('resultsContent').innerHTML = content;
+            new bootstrap.Modal(document.getElementById('resultsModal')).show();
+        }
+
+        // Document upload
+        document.getElementById('upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById('pdf-file');
+            formData.append('file', fileInput.files[0]);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('File uploaded successfully!');
+                    location.reload();
+                } else {
+                    alert('Upload failed: ' + data.error);
+                }
+            })
+            .catch(error => {
+                alert('Error uploading file: ' + error);
+            });
+        });
+
+        // Zotero functions
+        function testZoteroConnection() {
+            fetch('/zotero/test-connection')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Successfully connected to Zotero!');
+                    } else {
+                        alert('Failed to connect to Zotero: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('Error testing Zotero connection: ' + error);
+                });
+        }
+
+        function searchZotero() {
+            const query = document.getElementById('zotero-search-query').value;
+            const itemType = document.getElementById('zotero-item-type').value;
+            
+            if (!query) {
+                alert('Please enter a search query');
+                return;
+            }
+
+            const resultsDiv = document.getElementById('zotero-search-results');
+            resultsDiv.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"></div></div>';
+
+            fetch('/zotero/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: query,
+                    item_type: itemType
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.items.length === 0) {
+                        resultsDiv.innerHTML = '<div class="alert alert-info">No results found</div>';
+                        return;
+                    }
+
+                    let html = '<div class="list-group">';
+                    data.items.forEach(item => {
+                        html += `
+                            <div class="list-group-item">
+                                <h6 class="mb-1">${item.title}</h6>
+                                <p class="mb-1">Authors: ${item.authors.join(', ')}</p>
+                                <p class="mb-1">Year: ${item.year}</p>
+                                <p class="mb-1">Type: ${item.type}</p>
+                                ${item.journal ? `<p class="mb-1">Journal: ${item.journal}</p>` : ''}
+                                ${item.abstract ? `<p class="mb-1">Abstract: ${item.abstract.substring(0, 200)}...</p>` : ''}
+                                <div class="btn-group mt-2">
+                                    <button class="btn btn-sm btn-info" onclick="showItemDetails('${item.key}')">Details</button>
+                                    <button class="btn btn-sm btn-success" onclick="addToZotero('${item.key}')">Add to Library</button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                    resultsDiv.innerHTML = html;
+                } else {
+                    resultsDiv.innerHTML = `<div class="alert alert-danger">Error: ${data.error}</div>`;
+                }
+            })
+            .catch(error => {
+                resultsDiv.innerHTML = `<div class="alert alert-danger">Error: ${error}</div>`;
+            });
+        }
+
+        function showItemDetails(itemKey) {
+            fetch(`/zotero/item/${itemKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const item = data.item;
+                        showResults(`
+                            <h6>${item.title}</h6>
+                            <p><strong>Authors:</strong> ${item.authors.join(', ')}</p>
+                            <p><strong>Year:</strong> ${item.year}</p>
+                            <p><strong>Type:</strong> ${item.type}</p>
+                            ${item.journal ? `<p><strong>Journal:</strong> ${item.journal}</p>` : ''}
+                            ${item.doi ? `<p><strong>DOI:</strong> ${item.doi}</p>` : ''}
+                            ${item.url ? `<p><strong>URL:</strong> <a href="${item.url}" target="_blank">${item.url}</a></p>` : ''}
+                            ${item.abstract ? `<p><strong>Abstract:</strong><br>${item.abstract}</p>` : ''}
+                            ${item.tags.length > 0 ? `<p><strong>Tags:</strong> ${item.tags.join(', ')}</p>` : ''}
+                        `);
+                    } else {
+                        alert('Error loading item details: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    alert('Error: ' + error);
+                });
+        }
+
+        function addToZotero(docId) {
+            fetch('/zotero/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    document_id: docId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Successfully added to Zotero!');
+                } else {
+                    alert('Failed to add to Zotero: ' + data.error);
+                }
+            })
+            .catch(error => {
+                alert('Error adding to Zotero: ' + error);
+            });
+        }
+
+        // Question Answering
+        function askQuestion() {
+            const question = document.getElementById('question-input').value;
+            const docId = document.getElementById('qa-document-select').value;
+            
+            if (!question) {
+                alert('Please enter a question');
+                return;
+            }
+
+            const resultsDiv = document.getElementById('qa-results');
+            resultsDiv.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"></div></div>';
+
+            fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    question: question,
+                    document_id: docId || null
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    resultsDiv.innerHTML = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Question:</h6>
+                                <p>${data.question}</p>
+                                <h6>Answer:</h6>
+                                <p>${data.answer}</p>
+                                ${data.sources ? `
+                                    <h6>Sources:</h6>
+                                    <ul>
+                                        ${data.sources.map(source => `<li>${source}</li>`).join('')}
+                                    </ul>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    resultsDiv.innerHTML = `<div class="alert alert-danger">Error: ${data.error}</div>`;
+                }
+            })
+            .catch(error => {
+                resultsDiv.innerHTML = `<div class="alert alert-danger">Error: ${error}</div>`;
+            });
+        }
+
+        // Document Analysis
+        function summarizeDocument(docId) {
+            if (!docId) {
+                docId = document.getElementById('analysis-document-select').value;
+            }
+            
+            if (!docId) {
+                alert('Please select a document');
+                return;
+            }
+
+            fetch(`/summarize/${docId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showResults(`
+                            <h6>Summary</h6>
+                            <p>${data.summary}</p>
+                            <h6>Key Points</h6>
+                            <ul>
+                                ${data.key_points.map(point => `<li>${point}</li>`).join('')}
+                            </ul>
+                        `);
+                    } else {
+                        alert('Error getting summary: ' + data.error);
+                    }
+                })
+                .catch(error => alert('Error: ' + error));
+        }
+
+        function extractFigures(docId) {
+            if (!docId) {
+                docId = document.getElementById('analysis-document-select').value;
+            }
+            
+            if (!docId) {
+                alert('Please select a document');
+                return;
+            }
+
+            fetch(`/extract/${docId}/figures`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showResults(`
+                            <h6>Extracted Figures</h6>
+                            <div class="row">
+                                ${data.figures.map(figure => `
+                                    <div class="col-md-6 mb-3">
+                                        <img src="${figure.url}" class="img-fluid" alt="Figure">
+                                        <p class="mt-2">${figure.caption || 'No caption'}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `);
+                    } else {
+                        alert('Error extracting figures: ' + data.error);
+                    }
+                })
+                .catch(error => alert('Error: ' + error));
+        }
+
+        function extractTables(docId) {
+            if (!docId) {
+                docId = document.getElementById('analysis-document-select').value;
+            }
+            
+            if (!docId) {
+                alert('Please select a document');
+                return;
+            }
+
+            fetch(`/extract/${docId}/tables`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showResults(`
+                            <h6>Extracted Tables</h6>
+                            <div class="table-responsive">
+                                ${data.tables.map(table => `
+                                    <div class="mb-4">
+                                        <h6>${table.caption || 'Table'}</h6>
+                                        <table class="table table-bordered">
+                                            ${table.html}
+                                        </table>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `);
+                    } else {
+                        alert('Error extracting tables: ' + data.error);
+                    }
+                })
+                .catch(error => alert('Error: ' + error));
+        }
+
+        function analyzeCitations(docId) {
+            fetch('/citation-network', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    document_id: docId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showResults(`
+                        <h6>Citation Network</h6>
+                        <div id="citation-network" style="height: 500px;"></div>
+                    `);
+                    // Initialize network visualization
+                    const container = document.getElementById('citation-network');
+                    const network = new vis.Network(container, {
+                        nodes: new vis.DataSet(data.nodes),
+                        edges: new vis.DataSet(data.edges)
+                    }, {
+                        nodes: {
+                            shape: 'dot',
+                            size: 16
+                        },
+                        physics: {
+                            stabilization: true
+                        }
+                    });
+                } else {
+                    alert('Error analyzing citations: ' + data.error);
+                }
+            })
+            .catch(error => alert('Error: ' + error));
+        }
+
+        function findRelatedPapers(docId) {
+            fetch('/find-related-papers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    document_id: docId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showResults(`
+                        <h6>Related Papers</h6>
+                        <div class="list-group">
+                            ${data.related_papers.map(paper => `
+                                <div class="list-group-item">
+                                    <h6>${paper.title}</h6>
+                                    <p>Authors: ${paper.authors.join(', ')}</p>
+                                    <p>Year: ${paper.year}</p>
+                                    <p>Similarity: ${(paper.similarity_score * 100).toFixed(1)}%</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `);
+                } else {
+                    alert('Error finding related papers: ' + data.error);
+                }
+            })
+            .catch(error => alert('Error: ' + error));
+        }
+
+        function showDocumentActions(docId) {
+            new bootstrap.Modal(document.getElementById(`actionsModal-${docId}`)).show();
+        }
+
+        // Visualization functions
+        function generateVisualization(vizType) {
+            const docId = document.getElementById('analysis-document-select').value;
+            if (!docId) {
+                alert('Please select a document');
+                return;
+            }
+
+            const resultsDiv = document.getElementById('visualization-results');
+            resultsDiv.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"></div></div>';
+
+            fetch(`/visualize/${docId}/${vizType}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const viz = data.visualization;
+                        resultsDiv.innerHTML = `
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>${viz.type.charAt(0).toUpperCase() + viz.type.slice(1)} Visualization</h6>
+                                    <img src="data:image/png;base64,${viz.image}" class="img-fluid mb-3" alt="Visualization">
+                                    <p class="text-muted">${viz.explanation}</p>
+                                    <div class="mt-3">
+                                        <h6>Data Used:</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Value</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    ${viz.data.map(item => `
+                                                        <tr>
+                                                            <td>${item.Key}</td>
+                                                            <td>${item.Value}</td>
+                                                        </tr>
+                                                    `).join('')}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        resultsDiv.innerHTML = `<div class="alert alert-danger">Error: ${data.error}</div>`;
+                    }
+                })
+                .catch(error => {
+                    resultsDiv.innerHTML = `<div class="alert alert-danger">Error: ${error}</div>`;
+                });
+        }
+    </script>
+</body>
+</html> 
